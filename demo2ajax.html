@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vueajax请求</title>
+</head>
+<script src="vue.js"></script>
+<body>
+	<div id="demo1">
+		<p>{{name}}</p>
+		<button @click="ajax()">ok</button>
+	</div>
+</body>
+<script>
+	new Vue({
+		el: "#demo1",
+		data: {
+			name: 'hello',
+		},
+		methods:{
+			ajax:function(){
+				var self = this;
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET','test.php',true);
+				xhr.send();
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState == 4 && xhr.status == 200){
+						var json = JSON.parse(xhr.responseText);
+						console.log(json);
+						self.name = json.name;
+					}
+				}
+			}
+		}
+	})
+	
+	
+</script>
+</html>

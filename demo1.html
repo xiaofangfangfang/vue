@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue第一天第一个demo</title>
+</head>
+<script src="vue.js"></script>
+<body>
+	<div id="demo1">
+		<input v-model="name" name="{{name}}"/>
+		{{name}}
+		<p v-text="name"></p>
+		{{{html}}}
+		<!-- <button v-on:click="click()">OK</button> -->
+		<button @click="click()">ok</button>
+	</div>
+	<div id="demo2">{{name}}</div>
+</body>
+<script>
+// function Vue(name){
+// 	this.name = name
+// }
+// Vue构造器，创建一个对象
+//model
+	var click = function(){
+		console.log(this.name);
+	};
+	var data =  {
+			name: "wsscat",
+			html: "<p>123</p>",
+		};
+	var demo = new Vue({
+		//element的缩写
+		el: "#demo1",
+		//$scope.name
+		data,
+		//把函数定义在methods里面
+		methods:{
+			click:click,
+		},
+		ready:function(){//文档加载时就执行这个函数
+			this.click();
+		}
+	})
+	
+	//下面是设置数据的多有方法
+	console.log(demo);
+	demo.name = 'hello';
+	demo.$set('name','dsfdf');
+	demo.$get('name');
+	console.log(demo.$get('name'));
+	demo.click();//让它进来后，就执行click()
+
+
+	var demo2 = new Vue({
+		el: "#demo2",
+		data: {
+			name: "abc",
+			
+		}
+	})
+</script>
+</html>
