@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue的test</title>
+</head>
+<script src="vue.js"></script>
+<body>
+	<div id="demo">
+		<p>{{message}}</p>
+		<input v-model="message">
+	</div>
+</body>
+<script>
+//new一个vue对象
+	var demo = new Vue({//对象里面包含了
+		el:'#demo',
+		data:{
+			message:'myvue'
+		}
+	})
+</script>
+</html>
